@@ -1,5 +1,7 @@
 # imagenette-baseline
 
+The imagenette data set is from [here](https://github.com/fastai/imagenette).
+
 This project is similar to [cifar-baseline](https://github.com/chrisliu298/cifar-baseline), except that I used the original implementation of [ResNet](https://arxiv.org/abs/1512.03385) (or [here](https://pytorch.org/vision/stable/models/resnet.html)) instead of [the one implemented by kuangliu](https://github.com/kuangliu/pytorch-cifar). The differences are listed below:
 
 ```python
