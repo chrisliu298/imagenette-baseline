@@ -80,7 +80,7 @@ class WideResNet(nn.Module):
         block = BasicBlock
         # 1st conv before any network block
         self.conv1 = nn.Conv2d(
-            3, nChannels[0], kernel_size=3, stride=1, padding=1, bias=False
+            3, nChannels[0], kernel_size=7, stride=2, padding=3, bias=False
         )
         # 1st block
         self.block1 = NetworkBlock(n, nChannels[0], nChannels[1], block, 1, dropRate)
@@ -91,6 +91,7 @@ class WideResNet(nn.Module):
         # global average pooling and classifier
         self.bn1 = nn.BatchNorm2d(nChannels[3])
         self.relu = nn.ReLU(inplace=True)
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(nChannels[3], num_classes)
         self.nChannels = nChannels[3]
 
@@ -109,6 +110,7 @@ class WideResNet(nn.Module):
         out = self.block2(out)
         out = self.block3(out)
         out = self.relu(self.bn1(out))
-        out = F.avg_pool2d(out, 8)
+        # out = F.avg_pool2d(out, 8)
+        out = self.avgpool(out)
         out = out.view(-1, self.nChannels)
         return self.fc(out)
