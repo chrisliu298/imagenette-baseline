@@ -8,10 +8,18 @@ from torchmetrics.functional import accuracy
 from models import *
 
 MODELS = {
-    "simple_cnn": SimpleCNN5,
+    "simplecnn": SimpleCNN5,
     "resnet18": ResNet18,
-    "preact_resnet18": PreActResNet18,
-    "wide_resnet": WideResNet,
+    "resnet34": ResNet34,
+    "resnet50": ResNet50,
+    "resnet101": ResNet101,
+    "resnet152": ResNet152,
+    "preactresnet18": PreActResNet18,
+    "preactresnet34": PreActResNet34,
+    "preactresnet50": PreActResNet50,
+    "preactresnet101": PreActResNet101,
+    "preactresnet152": PreActResNet152,
+    "wideresnet": WideResNet,
 }
 
 
